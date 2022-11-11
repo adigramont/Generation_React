@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/estaticos/navbar/Navbar';
 import Footer from './components/estaticos/footer/Footer';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
@@ -12,25 +12,16 @@ function App() {
   return (
    <Router>
     <Navbar />
-      <Switch>
         <div style={{minHeight: '100vh'}}>
+      <Routes>
          
-        <Route exact path='/'>
-            <Login />
-             </Route>
-
-         <Route path='/login'>
-            <Login />
-             </Route>
-
-          <Route path='/home'>
-            <Home />
-             </Route>
-            <Route path='/cadastrousuario'>
-          <CadastroUsuario />
-        </Route>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<CadastroUsuario />} />
+          <Route path="/home" element={<Home />} />
+      
+      </Routes>
         </div>
-      </Switch>
     <Footer />
    </Router>
   );

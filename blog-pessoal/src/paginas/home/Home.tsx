@@ -5,7 +5,6 @@ import { Typography } from '@material-ui/core';
 
 function Home() {
   return (
-    <>
       <>
         <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
           <Grid alignItems="center" item xs={6}>
@@ -29,7 +28,7 @@ function Home() {
           </Grid>
           <Grid xs={12} className='postagens'>
         </Grid>
-      </>
+        </Grid>
     </>
   );
 }
