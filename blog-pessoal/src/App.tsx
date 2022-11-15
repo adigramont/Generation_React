@@ -7,6 +7,8 @@ import Home from './paginas/home/Home';
 import Login from './paginas/login/Login';
 import './App.css';
 import { minHeight } from '@mui/system';
+import ListaTema from './components/temas/listatema/ListaTema';
+import ListaPostagem from './components/postagens/listapostagem/ListaPostagem';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<CadastroUsuario />} />
+          <Route path="/temas" element={<ListaTema />} />
+          <Route path="/posts" element={<ListaPostagem />} />
           <Route path="/home" element={<Home />} />
       
       </Routes>
