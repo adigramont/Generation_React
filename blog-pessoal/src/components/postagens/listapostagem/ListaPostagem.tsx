@@ -81,4 +81,3 @@ deletar
 </>)
 }
 export default ListaPostagem;
-
