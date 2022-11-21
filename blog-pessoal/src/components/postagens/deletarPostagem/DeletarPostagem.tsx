@@ -3,25 +3,25 @@ import {Typography, Button, Box, Card, CardActions, CardContent } from "@materia
 import './DeletarPostagem.css';
 import Postagem from '../../../models/Postagem';
 import { buscaId, deleteId } from '../../../services/Service';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 
 function DeletarPostagem() {
-  let history = useHistory();
+  let history = useNavigate();
     const { id } = useParams<{id: string}>();
     const [token, setToken] = useLocalStorage('token');
     const [post, setPosts] = useState<Postagem>()
 
     useEffect(() => {
-        if (token = "") {
+        if (token == "") {
             alert ("Você precisa estar logado")
-            history.push("/login")
+            history("/login")
         }
 
     }, [token])
 
     useEffect(() =>{
-        if(id ≠ undefined){
+        if(id != undefined){
             findById(id)
         }
     }, [id])
@@ -35,7 +35,7 @@ function DeletarPostagem() {
       }
 
       function sim() {
-        history.push('/posts')
+        history('/posts')
         deleteId('/postagens/${id}', {
           headers: {
             'Authorization': token
@@ -45,7 +45,7 @@ function DeletarPostagem() {
       }
 
       function nao() {
-        history.push('/posts')
+        history('/posts')
       }
 
    

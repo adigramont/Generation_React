@@ -1,6 +1,6 @@
 import React, {useState, useEffect, ChangeEvent} from 'react'
 import { Container, Typography, TextField, Button } from "@material-ui/core"
-import { useHistory, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Tema from '../../../models/Tema';
 import { buscaId, post, put } from '../../../services/Service';
 import useLocalStorage from 'react-use-localstorage';
@@ -8,7 +8,7 @@ import './CadastroTema.css';
 
 
 function CadastroTema() {
-    let history = useHistory();
+    let history = useNavigate();
     const { id } = useParams<{id: string}>();
     const [token, setToken] = useLocalStorage('token');
     const [tema, setTema] = useState<Tema>({
@@ -18,15 +18,15 @@ function CadastroTema() {
     })
 
     useEffect(() => {
-        if (token = "") {
+        if (token == "") {
             alert ("Você precisa estar logado")
-            history.push("/login")
+            history("/login")
         }
 
     }, [token])
 
     useEffect(() =>{
-        if(id ≠ undefined){
+        if(id != undefined){
             findById(id)
         }
     }, [id])
@@ -50,7 +50,7 @@ function CadastroTema() {
         e.preventDefault()
         console.log("tema" + JSON.stringify(tema))
 
-        if(id ≠ undefined) {
+        if(id != undefined) {
             console.log(tema)
             put(`/tema`, tema, setTema, {
                 headers: {
@@ -60,7 +60,7 @@ function CadastroTema() {
             })
           alert('Tema atualizado com sucesso');
         } else {
-          post(`/tema`, tema, setTema{
+          post(`/tema`, tema, setTema
             headers: {
                 'Authorization': token
 
@@ -69,7 +69,7 @@ function CadastroTema() {
 
           }
           function back() {
-            history.push(`/temas`)
+            history(`/temas`)
 
           }
        

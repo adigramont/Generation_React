@@ -1,9 +1,9 @@
-import React { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import './ListaPostagem.css';
 import Postagem from '../../../models/Postagem';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import { busca } from '../../../services/Service';
 
 
@@ -12,26 +12,25 @@ function ListaPostagem() {
   
   const[posts, setPosts] = useState<Postagem[]>([])
   const[token, setToken] = useLocalStorage('token');
-  let history = useHistory();
+  let history = useNavigate();
   
   useEffect(() => {
     if(token = ''){
       alert("Você precisa estar logado")
-      history.push('/login')
+      history('/login')
     }
   }, [token])
   
   async function getPost(){
     await busca("/postagens", setPosts, {
       headers:
-      'Authorization': token
+      'Authorization', token
     }
-    })
-  }
+    
   
   
   
-  useEffect(()=>{
+    UseEffect(()=>{
     getPost()
   }, [posts.length])
   

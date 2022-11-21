@@ -2,7 +2,7 @@ import { AppBar,Toolbar,Typography } from '@material-ui/core';
 import { Box, Grid } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import './Navbar.css';
 
@@ -10,12 +10,12 @@ import './Navbar.css';
 
 function Navbar() {
   const [token, setToken]= useLocalStorage('token');
-  let history  = useHistory();
+  let history  = useNavigate();
 
 function goLogout(){
   setToken('')
   alert('Usuario deslogado')
-  history.push('/login')
+  history('/login')
 }
 
   return (

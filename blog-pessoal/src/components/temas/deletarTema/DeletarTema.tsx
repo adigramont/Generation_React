@@ -5,8 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import { buscaId, deleteId } from '../../../services/Service';
 import Tema from '../../../models/Tema';
-import { useHistory, useParams } from 'react-router-dom';
-import uselocalStorage from 'react-use-localstorage';
 
 
 function DeletarTema() {
@@ -17,15 +15,15 @@ function DeletarTema() {
     const [tema, setTema] = useState<Tema>()
 
     useEffect(() => {
-        if (token = "") {
+        if (token == "") {
             alert ("Você precisa estar logado")
-            history.push("/login")
+            history("/login")
         }
 
     }, [token])
 
     useEffect(() =>{
-        if(id ≠ undefined){
+        if(id != undefined){
             findById(id)
         }
     }, [id])
@@ -39,17 +37,17 @@ function DeletarTema() {
       }
 
       function sim() {
-        history.push('/temas')
+        history('/temas')
         deleteId('/tema/${id}', {
           headers: {
-            'Authorization': token
+            'Authorization', token
           }
         });
         alert('Tema deletado com sucesso');
       }
 
       function nao() {
-        history.push('/temas')
+        history('/temas')
       }
 
        
