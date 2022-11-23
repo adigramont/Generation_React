@@ -14,7 +14,7 @@ setValue(newValue);
 }
 return (
 <>
-<TabContext value={value}></TabContext>
+<TabContext value={value}>
 <AppBar position="static">
 <Tabs centered indicatorColor="secondary" onChange={handleChange}>
 <Tab label="Todas as postagens" value="1"/>
@@ -27,13 +27,12 @@ return (
 </Box>
 </TabPanel>
 <TabPanel value="2">
-<Typography variant="h5" gutterBottom color="textPrimary" component="h5" al
-<Typography variant="body1" gutterBottom color="textPrimary" align="justify
+<Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" </Typography>
+<Typography variant="body1" gutterBottom color="textPrimary" align="justify" > </Typography>
 </TabPanel>
 </TabContext>
 </>
 
 );
-
 }
 export default TabPostagem;

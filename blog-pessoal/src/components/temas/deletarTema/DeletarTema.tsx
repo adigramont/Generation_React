@@ -9,7 +9,7 @@ import Tema from '../../../models/Tema';
 
 function DeletarTema() {
 
-  let history = useHistory();
+  let history = useNavigate();
     const { id } = useParams<{id: string}>();
     const [token, setToken] = useLocalStorage('token');
     const [tema, setTema] = useState<Tema>()
@@ -38,9 +38,9 @@ function DeletarTema() {
 
       function sim() {
         history('/temas')
-        deleteId('/tema/${id}', {
+        deleteId(`/tema/${id}`, {
           headers: {
-            'Authorization', token
+            'Authorization': token
           }
         });
         alert('Tema deletado com sucesso');
