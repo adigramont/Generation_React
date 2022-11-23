@@ -5,7 +5,7 @@ import './ListaPostagem.css';
 import Postagem from '../../../models/Postagem';
 import {useNavigate} from 'react-router-dom';
 import { busca } from '../../../services/Service';
-
+import useLocalStorage from 'react-use-localstorage';
 
 
 function ListaPostagem() {
@@ -15,7 +15,7 @@ function ListaPostagem() {
   let history = useNavigate();
   
   useEffect(() => {
-    if(token = ''){
+    if(token == ''){
       alert("Você precisa estar logado")
       history('/login')
     }
@@ -23,14 +23,17 @@ function ListaPostagem() {
   
   async function getPost(){
     await busca("/postagens", setPosts, {
-      headers:
-      'Authorization', token
-    }
+      headers:{
+
+        'Authorization': token
+      }
+   
+    })
     
   
   
   
-    UseEffect(()=>{
+    useEffect(() => {
     getPost()
   }, [posts.length])
   
@@ -38,9 +41,21 @@ function ListaPostagem() {
   <>
   {
     posts.map(post =>(
-return (
+
 <>
-<Box m={2} >
+<Box mx={1}>
+<Button variant="contained" className="marginLeft" size="small" color='primary' >
+|
+atualizar
+</Button>
+</Box>
+</Link>
+<Link to="" className="text-decorator-none">
+<Box mx={1}>
+<Button variant="contained" size="small" color="secondary" ></Button>
+
+
+<Button>
 <Card variant="outlined">
 <CardContent>
 <Typography color="textSecondary" gutterBottom>
@@ -77,6 +92,9 @@ deletar
 </CardActions>
 </Card>
 </Box>
-</>)
+</>
+))}
+</>
+)
 }
 export default ListaPostagem;

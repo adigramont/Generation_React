@@ -46,7 +46,7 @@ function CadastroTema() {
         })
 
     }
-    async function onSubmit(e: ChangeEvent<HTMLImputElement>) {
+    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         console.log("tema" + JSON.stringify(tema))
 
@@ -60,11 +60,11 @@ function CadastroTema() {
             })
           alert('Tema atualizado com sucesso');
         } else {
-          post(`/tema`, tema, setTema
+          post(`/tema`, tema, setTema, {
             headers: {
                 'Authorization': token
-
             }
+            })
             back()
 
           }
